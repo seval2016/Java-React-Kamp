@@ -1,5 +1,9 @@
 package kodlamaio.northwind.core.utilities.results;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
 public class DataResult<T> extends Result {
 
     private T data;
@@ -7,6 +11,5 @@ public class DataResult<T> extends Result {
         super(success, message);
         this.data=data;
     }
-
 
 }
