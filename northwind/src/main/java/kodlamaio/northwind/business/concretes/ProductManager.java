@@ -3,6 +3,8 @@ package kodlamaio.northwind.business.concretes;
 import java.util.List;
 
 import kodlamaio.northwind.business.abstracts.ProductService;
+import kodlamaio.northwind.core.utilities.results.DataResult;
+import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.northwind.entities.concretes.Product;
 import lombok.AllArgsConstructor;
@@ -16,7 +18,8 @@ public class ProductManager implements ProductService {
 
     private final ProductDao productDao;
 
-    public List<Product> getAll() {
-        return productDao.findAll();
+    public DataResult<List<Product>> getAll() {
+
+        return new SuccessDataResult<List<Product>>(productDao.findAll(), "Data Listelendi");
     }
 }
