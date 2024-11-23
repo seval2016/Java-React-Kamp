@@ -12,4 +12,9 @@ public class DataResult<T> extends Result {
         this.data=data;
     }
 
+    public DataResult(T data, boolean success) {
+        super(success);
+        this.data=data;
+    }
+
 }
