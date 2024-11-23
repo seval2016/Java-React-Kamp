@@ -8,7 +8,6 @@ import lombok.Data;
 @Table(name = "products")
 public class Product {
 
-
     @Id
     @Column(name = "product_id")
     @GeneratedValue
