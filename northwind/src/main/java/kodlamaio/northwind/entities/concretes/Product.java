@@ -31,4 +31,8 @@ public class Product {
 
     @Column(name = "quantity_per_unit")
     private String quantityPerUnit;
+
+    @ManyToOne()
+    private Category category;
+
 }
