@@ -14,7 +14,6 @@ public class Product {
 
     @Id
     @Column(name = "product_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     /**
