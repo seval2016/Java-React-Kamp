@@ -17,8 +17,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "category_id")
-    private int categoryId;
+    /**
+     * @JoinColumn(name = "category_id") kodu
+     * category id ile iletişim kurdugu için
+     * tekrar bir değişken koymamıza gerek yok
+     * bu yüzden pasife çekiyoruz.
+     */
+    //@Column(name = "category_id")
+    //private int categoryId;
 
     @Column(name = "product_name")
     private String productName;
@@ -33,6 +39,7 @@ public class Product {
     private String quantityPerUnit;
 
     @ManyToOne()
+    @JoinColumn(name = "category_id")
     private Category category;
 
 }
