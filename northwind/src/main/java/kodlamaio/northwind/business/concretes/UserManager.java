@@ -5,6 +5,9 @@ import kodlamaio.northwind.core.dataAccess.UserDao;
 import kodlamaio.northwind.core.entities.User;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
+
+import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
+import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +19,13 @@ public class UserManager implements UserService {
 
     @Override
     public Result add(User user) {
-        return null;
+        userDao.save(user);
+        return new SuccessResult("Kullanıcı eklendi");
     }
 
     @Override
     public DataResult<User> findByEmail(String email) {
-        return null;
+        return new SuccessDataResult<User>(userDao.findByEmail(email),"Kullanıcı Bulundu");
+
     }
 }
