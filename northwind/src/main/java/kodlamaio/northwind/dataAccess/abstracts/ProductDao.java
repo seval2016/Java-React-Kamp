@@ -25,6 +25,13 @@ public interface ProductDao extends JpaRepository<Product,Integer>{
     @Query("From Product where productName=:productName and category.categoryId=:categoryId")
     List<Product> getByNameAndCategory(String productName, int categoryId);
 
+    /**
+     * Ürün ID'si (p.id),ürün adı (p.productName),kategori adı (c.categoryName):DTO'yu oluşturmak için kullanılan alanlardır.
+     * new anahtar kelimesi: Yeni bir DTO (veri aktarım nesnesi) oluşturmak için kullNILIR
+     * kodlamaio.northwind.entities.dtos.ProductWithCategoryDto: Oluşturulacak DTO'nun tam sınıf adıdır.
+     * Inner Join c.products p: Category tablosuyla Product tablosunu, Category tablosundaki bir ilişkiyi (c.products) kullanarak birleştirir.
+     * Bu yöntem, ProductWithCategoryDto tipinde nesnelerden oluşan bir liste döndürür.
+     */
     @Query("Select new kodlamaio.northwind.entities.dtos.ProductWithCategoryDto"
             + "(p.id, p.productName, c.categoryName) "
             + "From Category c Inner Join c.products p")

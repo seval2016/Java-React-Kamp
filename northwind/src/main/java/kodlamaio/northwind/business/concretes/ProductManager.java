@@ -2,6 +2,7 @@ package kodlamaio.northwind.business.concretes;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
