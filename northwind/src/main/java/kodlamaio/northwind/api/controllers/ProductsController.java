@@ -26,22 +26,22 @@ public class ProductsController {
 
     @GetMapping("/getall")
     public DataResult<List<Product>> getAll(){
-        return this.productService.getAll();
+        return productService.getAll();
     }
 
     @GetMapping("/getProductWithCategoryDetails")
     public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
-        return this.productService.getProductWithCategoryDetails();
+        return productService.getProductWithCategoryDetails();
     }
 
     @PostMapping("/add")
     public Result add(@RequestBody Product product) {
-        return this.productService.add(product);
+        return productService.add(product);
     }
 
     @GetMapping("/getByProductName")
     public DataResult<Product> getByProductName(@RequestParam String productName){
-        return this.productService.getByProductName(productName);
+        return productService.getByProductName(productName);
     }
 
     @GetMapping("/getByProductNameAndCategoryId")
@@ -50,13 +50,13 @@ public class ProductsController {
         System.out.println(productName);
         System.out.println(categoryId);
 
-        return this.productService.getByProductNameAndCategoryId
+        return productService.getByProductNameAndCategoryId
                 (productName, categoryId);
     }
 
     @GetMapping("/getByProductNameContains")
     public DataResult<List<Product>> getByProductNameContains(@RequestParam String productName){
-        return this.productService.getByProductNameContains(productName);
+        return productService.getByProductNameContains(productName);
     }
 
     @GetMapping("/getAllByPage")
@@ -66,7 +66,7 @@ public class ProductsController {
 
     @GetMapping("/getAllDesc")
     public DataResult<List<Product>> getAllSorted() {
-        return this.productService.getAllSorted();
+        return productService.getAllSorted();
     }
 
 
