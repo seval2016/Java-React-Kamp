@@ -3,11 +3,10 @@ import {
   DropdownMenu,
   Dropdown,
   MenuItem,
-  Input,
   Label,
   DropdownDivider,
-  DropdownItem,
 } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
 
 export default function CartSummary() {
   return (
@@ -20,7 +19,7 @@ export default function CartSummary() {
           </MenuItem>
 
           <MenuItem name="spam">
-            <Label>51</Label>
+            <Label>1</Label>
             Asus Laptop
           </MenuItem>
 
@@ -28,9 +27,9 @@ export default function CartSummary() {
             <Label>1</Label>
             Dell Laptop
           </MenuItem>
-          <DropdownDivider/>
-          <MenuItem name="sepeteGit" >
-          <Label icon='shopping basket'></Label>
+          <DropdownDivider />
+          <MenuItem name="sepeteGit" as={NavLink} to="/cart">
+            <Label className="py-2 pe-0" icon="shopping basket"></Label>
             Sepete Git
           </MenuItem>
         </DropdownMenu>
