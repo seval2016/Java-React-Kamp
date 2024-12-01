@@ -9,8 +9,8 @@ import {
 
 export default function CartSummary() {
   return (
-    <div>
-      <Dropdown item text="Sepett">
+    <div className="basket">
+      <Dropdown item text="Sepet">
         <DropdownMenu vertical>
           <MenuItem name="inbox">
             <Label color="teal">1</Label>

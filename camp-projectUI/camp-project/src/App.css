@@ -16,3 +16,13 @@
 .productList{
   width: 100%;
 }
+
+.outButtons,.basket{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.basket{
+  margin-right: 1rem;
+}

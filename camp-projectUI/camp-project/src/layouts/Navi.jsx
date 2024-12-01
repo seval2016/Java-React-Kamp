@@ -1,6 +1,8 @@
 import React from "react";
 import CartSummary from "./CartSummary";
 import { MenuMenu, MenuItem, Button, Menu, Container } from "semantic-ui-react";
+import SignedOut from "./SignedOut";
+import SignedIn from "./SignedIn";
 
 export default function Navi() {
   return (
@@ -11,10 +13,8 @@ export default function Navi() {
 
         <MenuMenu position="right">
           <CartSummary />
-
-          <MenuItem>
-            <Button primary>Sign Up</Button>
-          </MenuItem>
+          <SignedOut/>
+          <SignedIn/>
         </MenuMenu>
       </Container>
     </Menu>
