@@ -1,8 +1,10 @@
 import React from "react";
 import Categories from "./Categories";
-import ProductList from "./ProductList";
+import ProductList from "../pages/ProductList";
 import { Routes, Route } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
+import ProductDetail from "../pages/ProductDetail";
+import CartDetail from "../pages/CartDetail";
 
 export default function Dashboard() {
   return (
@@ -15,7 +17,10 @@ export default function Dashboard() {
           <Grid.Column width={12}>
             {/* <Route> bileşeni <Routes> içinde kullanılmalı */}
             <Routes>
-              <Route path="/" element={<ProductList />} />
+              <Route exact path="/" element={<ProductList />} />
+              <Route exact path="/products" element={<ProductList />} />
+              <Route exact path="/products/:id" element={<ProductDetail />} />
+              <Route exact path="/cart" element={<CartDetail />} />
             </Routes>
           </Grid.Column>
         </Grid.Row>
