@@ -10,18 +10,24 @@ import {
   Pagination,
 } from "semantic-ui-react";
 import ProductService from "../services/productService";
+import { Link } from "react-router-dom";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15;
 
   useEffect(() => {
     let productService = new ProductService();
-    productService.getProducts().then((result) => setProducts(result.data.data));
+    productService
+      .getProducts()
+      .then((result) => setProducts(result.data.data));
   }, []);
 
-  // Sayfalama işlemleri için 
+  
+
+  // Sayfalama işlemleri için
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -49,7 +55,14 @@ export default function ProductList() {
         {currentProducts.map((product, index) => (
           <TableRow key={product.id}>
             <TableCell>{indexOfFirstItem + index + 1}</TableCell>
-            <TableCell>{product.productName}</TableCell>
+            <TableCell>
+              <Link
+                className="text-decoration-none text-black"
+                to={`/products/${product.productName}`}
+              >
+                {product.productName}
+              </Link>
+            </TableCell>
             <TableCell>{product.unitPrice}</TableCell>
             <TableCell>{product.unitsInStock}</TableCell>
             <TableCell>{product.quantityPerUnit}</TableCell>
