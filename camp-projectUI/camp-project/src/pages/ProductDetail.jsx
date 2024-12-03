@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   CardMeta,
@@ -20,7 +20,8 @@ export default function ProductDetail() {
     let productService = new ProductService();
     productService
       .getByProductName(name)
-      .then((result) => setProduct(result.data.data));
+      .then((result) => setProduct(result.data.data))
+      .catch((error) => console.error("Error fetching product:", error)); // Hata yönetimi eklendi
   }, []);
 
   // Favorilere eklenip eklenmediğini kontrol etmek için state
@@ -33,7 +34,6 @@ export default function ProductDetail() {
 
   return (
     <div>
-      
       <Card fluid>
         <CardContent>
           <Image
@@ -42,9 +42,12 @@ export default function ProductDetail() {
             src="/images/avatar/large/steve.jpg"
           />
           <CardHeader>{product.productName}</CardHeader>
-          <CardMeta>Friends of Elliot</CardMeta>
+          <CardMeta>
+            {" "}
+            {product.category?.categoryName || "Kategori Bilgisi Bulunamadı"}
+          </CardMeta>
           <CardDescription>
-            Steve wants to add you to the group <strong>best friends</strong>
+            {product.quantityPerUnit || "Ürün bilgisi mevcut değil"}
           </CardDescription>
         </CardContent>
         <CardContent extra>

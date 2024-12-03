@@ -25,8 +25,6 @@ export default function ProductList() {
       .then((result) => setProducts(result.data.data));
   }, []);
 
-  
-
   // Sayfalama işlemleri için
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
