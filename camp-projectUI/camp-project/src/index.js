@@ -5,7 +5,8 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
-import { configureStore } from "./store/configureStore";
+import configureStore from "./store/configureStore";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore();

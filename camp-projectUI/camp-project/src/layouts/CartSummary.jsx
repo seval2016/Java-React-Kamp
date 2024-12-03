@@ -7,26 +7,21 @@ import {
   DropdownDivider,
 } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function CartSummary() {
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <div className="basket">
       <Dropdown item text="Sepetiniz">
         <DropdownMenu vertical>
-          <MenuItem name="inbox">
-            <Label color="teal">1</Label>
-            Acer Laptop
-          </MenuItem>
-
-          <MenuItem name="spam">
-            <Label>1</Label>
-            Asus Laptop
-          </MenuItem>
-
-          <MenuItem name="updates">
-            <Label>1</Label>
-            Dell Laptop
-          </MenuItem>
+          {cartItems.map((cartItem) => (
+            <MenuItem name="inbox">
+              <Label color="teal">{cartItem.quantity}</Label>
+              {cartItem.product.productName}
+            </MenuItem>
+          ))}
           <DropdownDivider />
           <MenuItem name="sepeteGit" as={NavLink} to="/cart">
             <Label className="py-2 pe-0" icon="shopping basket"></Label>

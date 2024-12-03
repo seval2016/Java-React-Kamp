@@ -8,11 +8,18 @@ import {
   TableCell,
   TableBody,
   Pagination,
+  Button,
 } from "semantic-ui-react";
 import ProductService from "../services/productService";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/actions/cartActions";
+import { toast, ToastContainer } from "react-toastify";
+
 
 export default function ProductList() {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,7 +43,21 @@ export default function ProductList() {
     setCurrentPage(activePage);
   };
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    toast.success(`${product.productName} sepete başarıyla eklendi!`, {
+      position: "bottom-right", // Mesajın sağ alt köşede görünmesi
+      autoClose: 3000, // Mesajın 3 saniye sonra otomatik kaybolması
+      hideProgressBar: false, // İlerleme çubuğu görünümü
+      closeOnClick: true, // Tıklayınca kapatma
+      pauseOnHover: true, // Üzerinde durunca durdurma
+      draggable: true, // Sürüklenebilir olması
+    });
+  };
+
   return (
+   <div>
+    <ToastContainer />
     <Table celled>
       <TableHeader>
         <TableRow>
@@ -46,6 +67,7 @@ export default function ProductList() {
           <TableHeaderCell>Stock Adedi</TableHeaderCell>
           <TableHeaderCell>Açıklama</TableHeaderCell>
           <TableHeaderCell>Kategori</TableHeaderCell>
+          <TableHeaderCell>İşlemler</TableHeaderCell>
         </TableRow>
       </TableHeader>
 
@@ -61,10 +83,14 @@ export default function ProductList() {
                 {product.productName}
               </Link>
             </TableCell>
-            <TableCell>{product.unitPrice}</TableCell>
+            <TableCell>{product.unitPrice.toFixed(2)}</TableCell>
             <TableCell>{product.unitsInStock}</TableCell>
             <TableCell>{product.quantityPerUnit}</TableCell>
             <TableCell>{product.category.categoryName}</TableCell>
+            <TableCell>
+              <Button onClick={()=>handleAddToCart(product)} color="blue" size="mini" icon="shopping basket">
+              </Button>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -82,5 +108,7 @@ export default function ProductList() {
         </TableRow>
       </TableFooter>
     </Table>
+   </div>
+    
   );
 }
