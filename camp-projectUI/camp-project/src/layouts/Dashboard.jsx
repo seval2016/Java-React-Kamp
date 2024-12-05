@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
 import ProductDetail from "../pages/ProductDetail";
 import CartDetail from "../pages/CartDetail";
-import { ToastContainer } from 'react-toastify';
+import ProductAdd from "../pages/ProductAdd";
 
 export default function Dashboard() {
   return (
@@ -24,6 +24,7 @@ export default function Dashboard() {
               <Route exact path="/products/:name" element={<ProductDetail />} />
               {/* burada detail sayfasını ada göre getiriyor id'ye göre getirmesi dahat doğru olur */}
               <Route exact path="/cart" element={<CartDetail />} />
+              <Route exact path="/product/add" element={<ProductAdd />} />
             </Routes>
           </Grid.Column>
         </Grid.Row>
